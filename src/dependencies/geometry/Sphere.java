@@ -1,4 +1,4 @@
-package main.dependencies.geom;
+package main.dependencies.geometry;
 
 import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;
@@ -95,9 +95,9 @@ public class Sphere {
 	        gl.glBufferData( GL4.GL_ELEMENT_ARRAY_BUFFER, indexBuffer.capacity() * Short.BYTES, indexBuffer, GL4.GL_STATIC_DRAW );
 		} else {			
 			gl.glBindBuffer( GL4.GL_ARRAY_BUFFER, positionBufferID );		
-			gl.glVertexAttribPointer( pipeline.positionAttributeID, 3, GL4.GL_FLOAT, false, 3*Float.BYTES, 0 );
+			gl.glVertexAttribPointer( pipeline.getPositionAttributeID(), 3, GL4.GL_FLOAT, false, 3*Float.BYTES, 0 );
 			gl.glBindBuffer( GL4.GL_ARRAY_BUFFER, normalBufferID );		
-		    gl.glVertexAttribPointer( pipeline.normalAttributeID, 3, GL4.GL_FLOAT, false, 3*Float.BYTES, 0 );			
+		    gl.glVertexAttribPointer( pipeline.getNormalAttributeID(), 3, GL4.GL_FLOAT, false, 3*Float.BYTES, 0 );
 			gl.glBindBuffer( GL4.GL_ELEMENT_ARRAY_BUFFER, elementBufferID );
 		    for ( int i = 0; i < slices; i++) {
 				gl.glDrawElements( GL4.GL_TRIANGLE_STRIP, 2*stacks, GL4.GL_UNSIGNED_SHORT, i*(2*stacks) * Short.BYTES );

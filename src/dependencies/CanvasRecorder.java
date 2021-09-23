@@ -1,4 +1,4 @@
-package comp557.a1.source;
+package main.dependencies;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
@@ -43,7 +43,6 @@ public class CanvasRecorder {
      * The image is saved in png format and will be of the same size as the canvas.
      * Use ffmpeg to assemble into a video after exporting frames.
      * @param drawable
-     * @param file
      * @return true on success
      */
     public void saveCanvasToFile( GLAutoDrawable drawable ) {

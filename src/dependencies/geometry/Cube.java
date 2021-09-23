@@ -1,4 +1,4 @@
-package main.dependencies.geom;
+package main.dependencies.geometry;
 
 import com.jogamp.opengl.GLAutoDrawable;
 import main.dependencies.*;

@@ -1,7 +1,9 @@
-package comp557.a1;
+package main.dependencies.geometry;
 //steven lee 260803947
 import com.jogamp.opengl.GLAutoDrawable;
 
+import main.dependencies.BasicPipeline;
+import main.dependencies.GraphNode;
 import mintools.parameters.DoubleParameter;
 
 public class FreeJoint extends GraphNode {

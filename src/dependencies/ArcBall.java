@@ -1,4 +1,4 @@
-package comp557.a2;
+package main.dependencies;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -8,56 +8,66 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
+import javax.vecmath.AxisAngle4d;
 import javax.vecmath.Matrix4d;
 import javax.vecmath.Vector3d;
 
 import mintools.parameters.DoubleParameter;
 import mintools.swing.VerticalFlowPanel;
 
-/** 
- * Left Mouse Drag Arcball
- * @author kry
- */
 public class ArcBall {
-		
+
 	private DoubleParameter fit = new DoubleParameter( "Fit", 1, 0.5, 2 );
 	private DoubleParameter gain = new DoubleParameter( "Gain", 1, 0.5, 2, true );
-	
-	/** The accumulated rotation of the arcball */
+
+	private Vector3d v0 = new Vector3d();
+	private Vector3d v1 = new Vector3d();
+	private Vector3d axis = new Vector3d();
+
+	private AxisAngle4d aa = new AxisAngle4d();
+
 	Matrix4d R = new Matrix4d();
+	private Matrix4d dR = new Matrix4d();
 
 	public ArcBall() {
 		R.setIdentity();
 	}
-	
-	/** 
-	 * Convert the x y position of the mouse event to a vector for your arcball computations 
-	 * @param e
-	 * @param v
-	 */
+
 	public void setVecFromMouseEvent( MouseEvent e, Vector3d v ) {
 		Component c = e.getComponent();
 		Dimension dim = c.getSize();
 		double width = dim.getWidth();
 		double height = dim.getHeight();
-		int mousex = e.getX();
-		int mousey = e.getY();
-		
-		// TODO: Objective 1: finish arcball vector helper function
-
+		double x = e.getX() - width/2;
+		double y = - e.getY() + height/2;
+		double radius = Math.min( dim.getWidth(), dim.getHeight() ) / 2 * fit.getValue();
+		v.set( x, y, 0 );
+		double vlen = v.length();
+		if ( vlen > radius ) {
+			v.normalize();
+		} else {
+			v.z = Math.sqrt( radius*radius - vlen*vlen );
+			v.normalize();
+		}
 	}
-	
-		
+
 	public void attach( Component c ) {
-		c.addMouseMotionListener( new MouseMotionListener() {			
+		c.addMouseMotionListener( new MouseMotionListener() {
 			@Override
 			public void mouseMoved( MouseEvent e ) {}
 			@Override
-			public void mouseDragged( MouseEvent e ) {				
+			public void mouseDragged( MouseEvent e ) {
+				setVecFromMouseEvent( e, v1 );
 				if ( (e.getModifiersEx() & MouseEvent.BUTTON1_DOWN_MASK) != 0 ) {
-					// TODO: Objective 1: Finish arcball rotation update on mouse drag when button 1 down!
-
+					axis.cross( v0, v1 );
+					double dot = v0.dot(v1);
+					if ( dot > 1 ) dot = 1;
+					double angle = Math.acos( dot );
+					aa.set( axis, angle * gain.getValue() );
+					dR.set( aa );
+					R.mul( dR, R );
 				}
+				v0.set( v1 );
 			}
 		});
 		c.addMouseListener( new MouseListener() {
@@ -65,7 +75,8 @@ public class ArcBall {
 			public void mouseReleased( MouseEvent e) {}
 			@Override
 			public void mousePressed( MouseEvent e) {
-				// TODO: Objective 1: arcball interaction starts when mouse is clicked
+				System.out.println("mouse pressed");
+				setVecFromMouseEvent( e, v0 );
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {}
@@ -75,13 +86,12 @@ public class ArcBall {
 			public void mouseClicked(MouseEvent e) {}
 		});
 	}
-	
+
 	public JPanel getControls() {
 		VerticalFlowPanel vfp = new VerticalFlowPanel();
-		vfp.setBorder( new TitledBorder("ArcBall Controls"));
 		vfp.add( fit.getControls() );
 		vfp.add( gain.getControls() );
 		return vfp.getPanel();
 	}
-		
+
 }

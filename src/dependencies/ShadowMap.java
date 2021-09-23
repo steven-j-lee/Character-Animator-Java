@@ -1,4 +1,4 @@
-package comp557.a2;
+package main.dependencies;
 
 import java.awt.Dimension;
 

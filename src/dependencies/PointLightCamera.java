@@ -1,4 +1,4 @@
-package comp557.a2;
+package main.dependencies;
 
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
@@ -8,12 +8,14 @@ import javax.vecmath.Vector4d;
 
 import com.jogamp.opengl.GLAutoDrawable;
 
-import comp557.a2.geom.FancyAxis;
-import comp557.a2.geom.QuadWithTexCoords;
-import comp557.a2.geom.WireCube;
+//import comp557.a2.geom.FancyAxis;
+//import comp557.a2.geom.QuadWithTexCoords;
+//import comp557.a2.geom.WireCube;
+import main.dependencies.geometry.SimpleAxis;
 import mintools.parameters.BooleanParameter;
 import mintools.parameters.DoubleParameter;
 import mintools.swing.VerticalFlowPanel;
+
 
 public class PointLightCamera extends Camera {	
 
@@ -33,35 +35,35 @@ public class PointLightCamera extends Camera {
     Matrix4d Vinv = new Matrix4d();
     Matrix4d Pinv = new Matrix4d();
     
-    public void draw( GLAutoDrawable drawable, ShadowPipeline pipeline ) {
+    public void draw( GLAutoDrawable drawable, BasicPipeline pipeline ) throws Exception {
     	if ( !debugLightFrustum.getValue() ) return;
+    	if(V.determinant() == 0.0){
+    	    throw new Exception("Viewing Matrix is not invertible");
+        } else{
+            Vinv.invert(V);
+        }
+    	if(P.determinant() == 0.0){
+            throw new Exception("Projection Matrix is not invertible");
+        } else{
+    	    Pinv.invert(P);
+        }
+        pipeline.push();
+		pipeline.controlLighting(drawable, false);
+		pipeline.matrixOp(drawable, Vinv);
+		if(pipeline.debugMode){
+            SimpleAxis.draw(drawable, pipeline);
+        }
+		pipeline.push();
+		pipeline.matrixOp(drawable, Pinv);
+		pipeline.pop();
 
-    	// TODO: Objective 4,5,6: Note lighting disabled for drawing things that should only be drawn in a solid colour using kd.
-    	
-		pipeline.disableLighting(drawable);
-
-    	// TODO: Objective 4: draw the light frame using a fancy axis... You must set up the right transformation!
-    	
-		FancyAxis.draw(drawable, pipeline);
-
-
-		// TODO: Objective 5: draw the light camera frustum using the inverse projection with a wire cube. You must set up the right transformation!
-		
-		pipeline.setkd( drawable, 1, 1, 1 );
-		WireCube.draw( drawable, pipeline );
-
-
-		// TODO: Objective 5: draw the light view on the near plane of the frustum. You must set up the right transformation! 
-		// That is, translate and scale the x and y directions of the -1 to 1 quad so that the quad fits exactly the l r t b portion of the near plane
-
-		pipeline.debugLightTexture(drawable);
-		QuadWithTexCoords.draw( drawable, pipeline );
 		
     }
     
     /**
      * @return controls for the shadow mapped light
      */
+
     public JPanel getControls() {
         VerticalFlowPanel vfp = new VerticalFlowPanel();
         vfp.setBorder(new TitledBorder("Point Light Camera Controls"));
@@ -72,3 +74,5 @@ public class PointLightCamera extends Camera {
     }
     
 }
+
+

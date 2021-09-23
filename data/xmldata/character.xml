@@ -1,6 +1,4 @@
 <?xml version="1.0"?>
-<!-- hierachrical definition of a character -->
-<!--  Steven Lee 260803947 -->
 <doc>
 	<!--  translation = position -->
 	<node type="freejoint" name="root">

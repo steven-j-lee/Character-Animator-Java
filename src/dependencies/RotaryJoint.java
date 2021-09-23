@@ -1,4 +1,4 @@
-package main.dependencies.geometry;
+package main.dependencies;
 import com.jogamp.opengl.GLAutoDrawable;
 import main.dependencies.BasicPipeline;
 import main.dependencies.GraphNode;
