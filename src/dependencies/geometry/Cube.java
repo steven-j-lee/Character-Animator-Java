@@ -1,8 +1,7 @@
-package comp557.a1.geom;
+package main.dependencies.geom;
 
 import com.jogamp.opengl.GLAutoDrawable;
-
-import comp557.a1.BasicPipeline;
+import main.dependencies.*;
 
 public class Cube {
 	public static void draw( GLAutoDrawable drawable, BasicPipeline pipeline ) {

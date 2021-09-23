@@ -1,4 +1,4 @@
-package comp557.a1.geom;
+package main.dependencies.geom;
 
 import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;
@@ -6,8 +6,7 @@ import java.nio.ShortBuffer;
 import com.jogamp.opengl.GL4;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.util.GLBuffers;
-
-import comp557.a1.BasicPipeline;
+import main.dependencies.BasicPipeline;
 
 public class Sphere {
 	private static boolean initialized = false;

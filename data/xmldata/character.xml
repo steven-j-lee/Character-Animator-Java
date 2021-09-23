@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!-- hierachrical definition of a character -->
+<!--  Steven Lee 260803947 -->
+<doc>
+	<!--  translation = position -->
+	<node type="freejoint" name="root">
+		<geom type="box" name="torso" translation="0 -0.2 0" uniformScale="1 1.2 0.9" colors="0.9 1 1"/>
+		<!--  back oxygen support -->
+		<geom type="box" name="box" translation="0 -0.2 -1" uniformScale="0.7 0.8 0.5" colors="1 0.9 0.9"/>
+		<geom type="box" name="box" translation="0 -0.2 1" uniformScale="0.7 0.8 0.5" colors="1 0.9 0.9"/>
+		<!--  no need to touch the head now -->
+		<node type ="spherical" name="head" translation="0 0.45 0" >
+			<geom type = "sphere" name = "face" translation="0 0.2 0" uniformScale="0.5 0.4 0.5" colors="0.7 1 0.9"/>
+		</node>
+		<!--  end of head -->
+		<!-- arms -->
+		<!--  right -->
+		<node type = "spherical" name = "r sh ball" translation = "-0.6 0.4 0">
+			<geom type = "sphere" name = "r ball" translation = "0 -0.54 0" uniformScale="0.2 0.2 0.2" colors="0.7 0.8 0.5"/>
+			<node type="spherical" name="r shoulder" translation="0 -0.1 0">
+				<geom type="box" name="upper r arm" translation="0 -0.5 0" uniformScale="0.2 0.5 0.3" colors="0.9 1 1"/>
+
+				<!--  x =1 ; y = 2 ; z = 3 -->
+				<node type="rotary" name="r e" definedAxisRot="1" setMinVal="0" setMaxVal="1" translation="0 -0.7 0">
+					<geom type = "sphere" name = "r ellb" translation = "0 0 0" uniformScale="0.3 0.3 0.3" colors="0.7 0.8 0.5"/>
+					<geom type = "box" name="r elbowm" translation="-0.1 -0.3 0" uniformScale= "0.2 1.2 0.2" colors="0.9 1 1"/>
+
+				</node>
+			</node>
+		</node>
+
+		<!--  left -->
+		<node type = "spherical" name = "L shoulder ball" translation = "0.6 0.4 0">
+			<geom type = "sphere" name = "Lsb" translation = "0 -0.54 0" uniformScale="0.2 0.2 0.2" colors="0.7 0.8 0.5"/>
+			<node type = "spherical" name = "L shouer" translation ="0 -0.1 0">
+				<geom type="box" name="upper L arm" translation="0 -0.5 0" uniformScale="0.2 0.5 0.3" colors="0.9 1 1"/>
+				<!--  x = 1 ; y == 2 ; z = 3 -->
+				<node type="rotary" name="r e" definedAxisRot="1" setMinVal="0" setMaxVal="1" translation="0 -0.7 0">
+					<geom type = "sphere" name = "r ellb" translation = "0 0 0" uniformScale="0.3 0.3 0.3" colors="0.7 0.8 0.5"/>
+					<geom type = "box" name="r elbowm" translation="-0.1 -0.3 0" uniformScale= "0.2 1.2 0.2" colors="0.9 1 1"/>
+				</node>
+			</node>
+		</node>
+
+		<!--  legs -->
+
+		<node type = "spherical" name = "r lg ball" translation = "-0.3 -0.8 0">
+			<geom type = "sphere" name = "r tr" translation = "0 -0.54 0" uniformScale="0.2 0.2 0.2" colors="0.7 0.8 0.5"/>
+			<node type="spherical" name="r thighs" translation="0 -0.1 0">
+				<geom type="box" name="upper r t" translation="0 -0.5 0" uniformScale="0.3 0.5 0.3" colors="0.9 1 1"/>
+
+				<!--  x =1 ; y = 2 ; z = 3 -->
+				<node type="rotary" name="r h" definedAxisRot="1" setMinVal="0" setMaxVal="1" translation="0 -0.5 0">
+					<geom type = "sphere" name = "r fL" translation = "0 0.1 0" uniformScale="0.25 0.25 0.25" colors="0.7 0.8 0.5"/>
+					<geom type = "box" name="r L" translation="-0.1 -0.5 0" uniformScale= "0.3 1.2 0.2" colors="0.9 1 1"/>
+					<node type = "rotary" name="r foot"  definedAxisRot="1" setMinVal="0" setMaxVal="1" translation="0 -1.1 0">
+						<geom type = "box" name = "rfootm" translation="-0.1 0 -0.2" uniformScale="0.3 0.3 0.5" colors="0.9 1 1"/>
+					</node>
+				</node>
+			</node>
+		</node>
+
+		<!--  left -->
+		<node type = "spherical" name = "L lg ball" translation = "0.3 -0.8 0">
+			<geom type = "sphere" name = "L tr" translation = "0 -0.54 0" uniformScale="0.2 0.2 0.2" colors="0.7 0.8 0.5"/>
+			<node type = "spherical" name = "L thighs" translation ="0 -0.1 0">
+				<geom type="box" name="upper L t" translation="0 -0.5 0" uniformScale="0.3 0.5 0.3" colors="0.9 1 1"/>
+				<!--  x = 1 ; y == 2 ; z = 3 -->
+				<node type="rotary" name="L h" definedAxisRot="1" setMinVal="0" setMaxVal="1" translation="0 -0.5 0">
+					<geom type = "sphere" name = "L fL" translation = "0 0.1 0" uniformScale="0.25 0.25 0.25" colors="0.7 0.8 0.5"/>
+					<geom type = "box" name="L L" translation="-0.1 -0.5 0" uniformScale= "0.3 1.2 0.2" colors="0.9 1 1"/>
+					<node type = "rotary" name="L foot"  definedAxisRot="1" setMinVal="0" setMaxVal="1" translation="0 -1.1 0">
+						<geom type = "box" name = "Lfootm" translation="-0.1 0 -0.2" uniformScale="0.3 0.3 0.5" colors="0.9 1 1"/>
+					</node>
+				</node>
+			</node>
+		</node>
+
+	</node>
+</doc>

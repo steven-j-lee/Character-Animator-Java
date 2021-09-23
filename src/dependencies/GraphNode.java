@@ -1,4 +1,4 @@
-package comp557.a1;
+package main.dependencies;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -8,7 +8,7 @@ import javax.swing.border.TitledBorder;
 
 import com.jogamp.opengl.GLAutoDrawable;
 
-import comp557.a1.geom.SimpleAxis;
+import main.dependencies.geometry.*;
 import mintools.parameters.BooleanParameter;
 import mintools.parameters.DoubleParameter;
 import mintools.swing.CollapsiblePanel;
@@ -29,7 +29,7 @@ public abstract class GraphNode {
 	
     LinkedList<GraphNode> children = new LinkedList<GraphNode>();
 
-    Collection<DoubleParameter> dofs = new LinkedList<DoubleParameter>();
+    public Collection<DoubleParameter> dofs = new LinkedList<DoubleParameter>();
     
     /** parameter to enable debugging, which is added to the interface by the main application */
     static final BooleanParameter debugFrames = new BooleanParameter( "debug frames", false );

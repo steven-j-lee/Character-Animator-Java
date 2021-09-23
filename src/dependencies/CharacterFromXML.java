@@ -1,4 +1,4 @@
-package comp557.a1;
+package comp557.a1.source;
  		  	  				   
 import java.io.File;
 import java.io.FileInputStream;

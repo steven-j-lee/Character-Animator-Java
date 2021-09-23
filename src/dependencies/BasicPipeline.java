@@ -1,4 +1,4 @@
-package comp557.a1;
+package comp557.a1.source;
 
 import javax.management.RuntimeErrorException;
 import javax.vecmath.AxisAngle4d;

@@ -1,4 +1,4 @@
-package comp557.a1;
+package comp557.a1.source;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -24,14 +24,14 @@ import mintools.swing.ControlFrame;
  * a scene graph constructed with DAGNodes.
  * @author kry
  */
-public class A1App implements GLEventListener {
+public class Main implements GLEventListener {
 
     /**
      * Creates a Basic GL Window and links it to a GLEventListener
      * @param args
      */
     public static void main(String[] args) {
-    	new A1App();
+    	new Main();
     }
  
     /** Object to create an animated character and to drive its motion */
@@ -43,7 +43,7 @@ public class A1App implements GLEventListener {
     /** Basic lighting pipeline, and other tools */
     private BasicPipeline pipeline;
     
-    public A1App() {
+    public Main() {
         String windowName = "Assignment 1 - " + CharacterMaker.name;
         GLProfile glp = GLProfile.getDefault();
         GLCapabilities glcap = new GLCapabilities(glp);
