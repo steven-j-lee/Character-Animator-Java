@@ -1,10 +1,10 @@
-package main.dependencies;
+package dependencies;
 
 import javax.swing.JTextField;
 import javax.vecmath.Vector3d;
 import javax.vecmath.Vector3f;
 
-import main.dependencies.geometry.BaseShapeControllers;
+import dependencies.geometry.BaseShapeControllers;
 import mintools.parameters.BooleanParameter;
 
 public class CharacterMaker {

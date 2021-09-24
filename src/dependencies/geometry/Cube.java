@@ -1,7 +1,7 @@
-package main.dependencies.geometry;
+package dependencies.geometry;
 
 import com.jogamp.opengl.GLAutoDrawable;
-import main.dependencies.*;
+import dependencies.*;
 
 public class Cube {
 	public static void draw( GLAutoDrawable drawable, BasicPipeline pipeline ) {

@@ -1,4 +1,4 @@
-package main.dependencies;
+package dependencies;
 
 import javax.swing.JPanel;
 import javax.vecmath.Matrix3d;

@@ -1,4 +1,4 @@
-package main.dependencies;
+package dependencies;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -94,6 +94,8 @@ public class Main implements GLEventListener {
     public void display( GLAutoDrawable drawable ) {
         GL4 gl = drawable.getGL().getGL4();
         gl.glClear(GL4.GL_COLOR_BUFFER_BIT | GL4.GL_DEPTH_BUFFER_BIT);
+        //pipeline.startLightViewPass(drawable);
+        //scene.display(drawable, pipeline);
         pipeline.startCameraViewPass(drawable);
         scene.display(drawable, pipeline);
         canvasRecorder.saveCanvasToFile( drawable );

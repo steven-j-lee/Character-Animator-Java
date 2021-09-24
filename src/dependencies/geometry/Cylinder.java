@@ -1,11 +1,11 @@
-package main.dependencies.geometry;
+package dependencies.geometry;
 
 import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;
 import com.jogamp.opengl.GL4;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.util.GLBuffers;
-import main.dependencies.BasicPipeline;
+import dependencies.BasicPipeline;
 
 public class Cylinder {
     private static boolean initialized = false;

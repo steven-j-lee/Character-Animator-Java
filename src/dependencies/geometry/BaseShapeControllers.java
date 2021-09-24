@@ -1,11 +1,11 @@
-package main.dependencies.geometry;
+package dependencies.geometry;
 import javax.vecmath.Vector3d;
 import javax.vecmath.Vector3f;
 
 import com.jogamp.opengl.GL4;
 import com.jogamp.opengl.GLAutoDrawable;
-import main.dependencies.BasicPipeline;
-import main.dependencies.GraphNode;
+import dependencies.BasicPipeline;
+import dependencies.GraphNode;
 
 public class BaseShapeControllers extends GraphNode{
     Vector3d translation;

@@ -1,4 +1,4 @@
-package main.dependencies;
+package dependencies;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -8,7 +8,7 @@ import javax.swing.border.TitledBorder;
 
 import com.jogamp.opengl.GLAutoDrawable;
 
-import main.dependencies.geometry.SimpleAxis;
+import dependencies.geometry.SimpleAxis;
 import mintools.parameters.BooleanParameter;
 import mintools.parameters.DoubleParameter;
 import mintools.swing.CollapsiblePanel;

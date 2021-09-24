@@ -1,4 +1,4 @@
-package main.dependencies;
+package dependencies;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -23,7 +23,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import main.dependencies.geometry.Quad;
+import dependencies.geometry.Quad;
 import mintools.parameters.BooleanParameter;
 import mintools.parameters.DoubleParameter;
 import mintools.swing.HorizontalFlowPanel;

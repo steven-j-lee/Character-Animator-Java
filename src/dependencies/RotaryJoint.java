@@ -1,7 +1,5 @@
-package main.dependencies;
+package dependencies;
 import com.jogamp.opengl.GLAutoDrawable;
-import main.dependencies.BasicPipeline;
-import main.dependencies.GraphNode;
 import mintools.parameters.DoubleParameter;
 
 import javax.vecmath.Vector3d;

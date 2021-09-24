@@ -1,4 +1,4 @@
-package main.dependencies;
+package dependencies;
 
 import javax.management.RuntimeErrorException;
 import javax.swing.*;
@@ -325,7 +325,7 @@ public class BasicPipeline {
 		GL4 gl = drawable.getGL().getGL4();
 		shadowMap.bindPrimaryFrameBuffer(drawable);
 		camera.updateMatrix(drawable.getSurfaceWidth(), drawable.getSurfaceHeight());
-		camera.updateMatrix(512.0, 512.0);
+		//pointLightSource.updateMatrix(512.0, 512.0);
 		camera.V.mul(arcBall.R);
 		gl.glUseProgram(glslProgramID);
 		gl.glEnableVertexAttribArray(positionAttributeID);
@@ -340,10 +340,21 @@ public class BasicPipeline {
 		}
 		glUniformMatrix(gl, MinvTMatrixID, MinvTMatrix);
 
+		/*
 		pointLightSource.getPositionInWorld(lightPosition);
 		camera.V.transform(lightPosition);
 
-		gl.glUniform3f(lightPosID, lightPosition.x, lightPosition.y, lightPosition.z);
+		gl.glUniform3f(lightPosID, (float) lightPosition.x, (float) lightPosition.y, (float) lightPosition.z);
+		gl.glUniform3f(kdID, 1.0f, 1.0f, 1.0f);
+		gl.glUniform3f(ksID, 1.0f, 1.0f, 1.0f);
+		gl.glUniform1f(shininessID, 124.0f);
+		gl.glUniform3f(lightColorID, 1.0f, 1.0f, 1.0f);
+		gl.glUniform1i(enableLightingID, 1);
+		glUniformMatrix(gl, PMatrixID, pointLightSource.P);
+		glUniformMatrix(gl, VMatrixID, pointLightSource.V);
+		gl.glUniform1f(sigmaID, pointLightSource.sigma.getFloatValue());
+		gl.glUniform1i(shadowMapID, 1);
+		 */
 	}
 
 	//first scene pass from eye's pov
@@ -378,6 +389,7 @@ public class BasicPipeline {
 		VerticalFlowPanel vfp = new VerticalFlowPanel();
 		vfp.add(camera.getControls());
 		vfp.add(arcBall.getControls());
+		vfp.add(pointLightSource.getControls());
 		return vfp.getPanel();
 	}
 
@@ -385,8 +397,11 @@ public class BasicPipeline {
 		arcBall.attach(c);
 	}
 
-	public Vector3f Vec3dToFloat(Vector3d){
+	public Vector3f vec3dToFloat(Vector3d vector){
 		Vector3f convertedVector = new Vector3f();
+		convertedVector.x = (float) vector.x;
+		convertedVector.y = (float) vector.y;
+		convertedVector.z = (float) vector.z;
 		return convertedVector;
 	}
 }

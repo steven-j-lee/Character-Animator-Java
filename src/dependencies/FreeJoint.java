@@ -1,4 +1,4 @@
-package main.dependencies;
+package dependencies;
 
 import com.jogamp.opengl.GLAutoDrawable;
 

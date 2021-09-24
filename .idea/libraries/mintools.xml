@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="mintools">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/jars/mintools.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/jars/mintools.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jars/mintools.jar!/src" />
+    </SOURCES>
+  </library>
+</component>
